@@ -389,7 +389,7 @@ namespace Projecto_PrograVI_MVC.Controllers
                     Correo.Priority = MailPriority.Normal;
 
                     SmtpClient ServerEmail = new SmtpClient();
-                    ServerEmail.Credentials = new NetworkCredential("alejoguma94@gmail.com", "C@rl1t0X1");
+                    ServerEmail.Credentials = new NetworkCredential("", "clave");
                     ServerEmail.Host = "smtp.gmail.com";
                     ServerEmail.Port = 587;
                     ServerEmail.EnableSsl = true;
