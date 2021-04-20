@@ -1,0 +1,151 @@
+﻿@model Projecto_PrograVI_MVC.Models.ReparacionModel 
+
+@{ 
+    ViewBag.Title = "Reparacion";
+}
+
+<h2>Reparacion</h2>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section Scripts {
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+  
+}
+
+@using (Html.BeginForm())
+{
+
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Registrarse para realizar cotizaciones</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSMarca, htmlAttributes: new { @class = "control-label  col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VLSMarca, new List<SelectListItem>{
+           new SelectListItem {Text = "Lenovo",Value = "Lenovo" },  new SelectListItem { Text = "HP", Value="HP"}
+           ,  new SelectListItem { Text = "Toshiba", Value="Toshiba"} ,  new SelectListItem { Text = "Dell", Value="Dell"}
+           ,  new SelectListItem { Text = "Mac", Value="Mac"},  new SelectListItem { Text = "Sony", Value="Sony"}
+           ,  new SelectListItem { Text = "Alien Ware", Value="Alien Ware"}
+          }, "Seleccione Marca ")
+                @Html.ValidationMessageFor(model => model.VLSMarca, "", new { @class = "text-danger" })
+            
+            </div>
+        </div>
+
+     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSDano, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(model => model.VLSDano, new List<SelectListItem>{
+           new SelectListItem {Text = "Pantalla Danada",Value = "Pantalla Danada" },  new SelectListItem { Text = "Cargador Danado", Value="Cargador Danado"}
+           ,  new SelectListItem { Text = "Tarjeta Madre Danada", Value="Tarjeta Madre Danada"} ,  new SelectListItem { Text = "Tecaldo Danado", Value="Tecaldo Danado"}
+           ,  new SelectListItem { Text = "Flex Danado", Value="Flex Danado"},  new SelectListItem { Text = "Bateria Danada", Value="Bateria Danada"}
+           ,  new SelectListItem { Text = "RAM danada", Value="RAM danada"}
+          }, "Seleccione Dano en su computadora ")
+                @Html.ValidationMessageFor(model => model.VLSDano, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSDiscoDuro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+            @Html.DropDownListFor(model => model.VLSDiscoDuro, new List<SelectListItem>{
+           new SelectListItem {Text = "250GB",Value = "250GB" },  new SelectListItem { Text = "500GB", Value="500GB"}
+           ,  new SelectListItem { Text = "750GB", Value="750GB"} ,  new SelectListItem { Text = "1TB", Value="1TB"}
+           ,  new SelectListItem { Text = "2TB", Value="2TB"},  new SelectListItem { Text = "4TB", Value="4TB"}
+           ,  new SelectListItem { Text = "5TB", Value="5TB"}
+          }, "Seleccione tamano de disco duro en su computadora ")
+                @Html.ValidationMessageFor(model => model.VLSDiscoDuro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSMemoria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(model => model.VLSMemoria, new List<SelectListItem>{
+           new SelectListItem {Text = "1GB",Value = "1GB" },  new SelectListItem { Text = "2GB", Value="2GB"}
+           ,  new SelectListItem { Text = "4GB", Value="4GB"} ,  new SelectListItem { Text = "6GB", Value="6GB"}
+           ,  new SelectListItem { Text = "8GB", Value="8GB"},  new SelectListItem { Text = "10GB", Value="10GB"}
+           ,  new SelectListItem { Text = "12GB", Value="12GB"} ,  new SelectListItem { Text = "16GB", Value="16GB"}
+          }, "Seleccione capacidad de memeoria e su computadora ")
+            @Html.ValidationMessageFor(model => model.VLSMemoria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+             @Html.DropDownListFor(model => model.VLSTipo, new List<SelectListItem>{
+           new SelectListItem {Text = "Desktop",Value = "Desktop" },  new SelectListItem { Text = "Laptop", Value="Laptop"}
+          
+          }, "Seleccione tipo de computadora ")
+                @Html.ValidationMessageFor(model => model.VLSTipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSSO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VLSSO, new List<SelectListItem>{
+           new SelectListItem {Text = "Windows 10",Value = "Windows 10" },  new SelectListItem { Text = "Windows 8", Value="Windows 8"}
+           ,  new SelectListItem { Text = "Linux", Value="Linux"} ,  new SelectListItem { Text = "Mac", Value="Mac"}
+           ,  new SelectListItem { Text = "Windows Server", Value="Windows Server"}
+          }, "Seleccione Sistema Operativo Instalado")
+                @Html.ValidationMessageFor(model => model.VLSSO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSAdicionales, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSAdicionales, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VLSAdicionales, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSLimpieza, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VLSLimpieza , new List<SelectListItem>{
+           new SelectListItem {Text = "Limpiza Externa",Value = "Limpiza Externa" },
+               new SelectListItem { Text = "Limpiza Interna", Value="Limpieza Interna"}
+           ,  new SelectListItem { Text = "Ambas", Value="Ambas"}
+          }, "Seleccione Tipo de Limpieza que desea")
+                @Html.ValidationMessageFor(model => model.VLSLimpieza, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSDescripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSDescripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VLSDescripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Pagar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

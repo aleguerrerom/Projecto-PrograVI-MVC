@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_Usuario">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nacionalidad" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" />
+          <Property Name="Num_Tarjeta" Type="varchar" MaxLength="12" />
+          <Property Name="Nom_Tarjeta" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo_Tarj" Type="varchar" MaxLength="4" />
+          <Property Name="Fecha_Exp_Tarj" Type="datetime" />
+          <Property Name="Provincia" Type="varchar" MaxLength="50" />
+          <Property Name="Canton" Type="varchar" MaxLength="50" />
+          <Property Name="Distrito" Type="varchar" MaxLength="50" />
+          <Property Name="Clave" Type="varchar" MaxLength="12" />
+          <Property Name="RecordarClave" Type="bit" />
+          <Property Name="Privilegios" Type="varchar" MaxLength="50" />
+          <Property Name="Pregunta_Seg" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DB_ProyectoModelStoreContainer">
+          <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_Usuario">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nacionalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Num_Tarjeta" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Nom_Tarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Tarj" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Exp_Tarj" Type="DateTime" Precision="3" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Canton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="RecordarClave" Type="Boolean" />
+          <Property Name="Privilegios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pregunta_Seg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DB_ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_ProyectoModelStoreContainer" CdmEntityContainer="DB_ProyectoEntities">
+          <EntitySetMapping Name="TB_Usuario">
+            <EntityTypeMapping TypeName="DB_ProyectoModel.TB_Usuario">
+              <MappingFragment StoreEntitySet="TB_Usuario">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Num_Tarjeta" ColumnName="Num_Tarjeta" />
+                <ScalarProperty Name="Nom_Tarjeta" ColumnName="Nom_Tarjeta" />
+                <ScalarProperty Name="Codigo_Tarj" ColumnName="Codigo_Tarj" />
+                <ScalarProperty Name="Fecha_Exp_Tarj" ColumnName="Fecha_Exp_Tarj" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="RecordarClave" ColumnName="RecordarClave" />
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+                <ScalarProperty Name="Pregunta_Seg" ColumnName="Pregunta_Seg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

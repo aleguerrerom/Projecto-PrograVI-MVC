@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+   
+    <script src="~/scripts/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>  
+                </button>
+            </div>
+            
+                <ul class="nav navbar-nav">
+                    <li><img id="img_logo" alt="Logo" src="@Url.Content("~/Content/images/logo.png")" /></li>
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
+                        <li>@Html.ActionLink("Inicio", "Index", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        <li>@Html.ActionLink("Contacto", "Contacto", "Contacto", new { id = "topbar" }, new { @class = "navbar-brand" })</li>
+                        <li>@Html.ActionLink("Consultas", "Consulta", "Consulta", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    }
+                    else if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+
+                        {
+                           
+                            <li> @Html.ActionLink("Inicio", "Index", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li> @Html.ActionLink("Reparacion", "Reparacion", "Reparacion", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li> @Html.ActionLink("Pagos", "Pago", "Reparacion", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li> @Html.ActionLink("Reportes", "Reporte", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li class="dropdown open">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+                                    Admin <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Administrar", "Administrar", "Administrar")</li>
+                                    <li>@Html.ActionLink("Crear Usuarios", "Usuarios", "Account")</li>
+                                    <li>@Html.ActionLink("Reporte Usuarios", "ReporteUsuarios", "Account")</li>
+                                </ul>
+                            </li>
+                              
+                        }
+                        if (User.IsInRole("Cliente"))
+                        {
+                            <li>@Html.ActionLink("Inicio", "Index", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Reparacion", "Reparacion", "Reparacion", new { id = "test" }, new { @class = "navbar-brand" })</li>  
+                        }
+                     }
+                    </ul>
+                    @if (User.Identity.IsAuthenticated == false)
+                        {
+                               @Html.Partial("_loginPartial")
+                        }
+                else if (User.Identity.IsAuthenticated)
+                        {
+                        @Html.Partial("_LoggedIn")
+                        }
+                  </div>
+              </div>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Warrior's Reparacion de PCs</p>
+            <p>&copy; Alejandro Guerrero Madrigal, Universidad Tecnologica</p>
+        </footer>
+    </div>
+   
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+  
+        
+    
+</body>
+</html>

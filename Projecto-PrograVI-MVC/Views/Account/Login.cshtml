@@ -1,0 +1,75 @@
+﻿@model Projecto_PrograVI_MVC.Models.AccountModel
+@using System.Web.Mvc.Html;
+
+@{
+    ViewBag.Title = "Login";
+
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm())
+{
+    
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+
+    <div class="form-horizontal">
+        <h4>Inicio de Sesion, en caso de no tener usuario, realizar la creacion de uno, para poder cotizar</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSCorreo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSCorreo, new { htmlAttributes = new { @class = "form-control" ,@id = "correo"} })
+                @Html.ValidationMessageFor(model => model.VLSCorreo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSClave, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSClave, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VLSClave, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offseBack to List-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" id="btnlogin"/> 
+               
+                <input type="button" id="Cancel" value="Cancel" class="btn btn-default" onclick="location.href='@Url.Action("Login","Account")';return false;" />
+                
+                
+                <div>
+                    
+                </div>
+            </div>
+
+           
+        </div>
+
+        <h2>@Html.ViewData["Message"]</h2>
+    </div>
+}<div>
+    @Html.ActionLink("Olvido su clave", "ForgotPassword")
+</div>
+
+<div>
+    @Html.ActionLink("Registrarse", "Register")
+    
+</div>
+
+
+<script src="~/scripts/EstadoClave.js"></script>
+<script src="~/scripts/Prueba.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

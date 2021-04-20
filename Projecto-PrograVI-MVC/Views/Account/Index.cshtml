@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@if (Session["Correo"] != null)
+{
+    <h2>Welcome @Session["Correo"].ToString()</h2>
+}
+else
+{
+    Response.Redirect("Login");
+}
+
+@using (Html.BeginForm())
+{
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+    <div class="form-horizontal">
+        <h3>Bienvenido a Warrior Repair</h3>
+        <p></p>
+        <p>Informacion General para Contactos </p>
+
+        <p>Correo: aleguemad94@yahoo.es </p>
+        <p>Numero de Oficina: (+506)2273-0023 </p>
+        <p>Celular: (+506)84745584</p>
+     
+
+    </div>
+
+}
+@Html.ActionLink("LogOut", "LogOut")
+<script type="text/javascript">
+    function preventBack() {
+        window.history.forward();
+    }
+    setTimeout("preventBack()", 0)
+    window.onunload = function () {
+        null;
+    }
+
+</script>
+
+

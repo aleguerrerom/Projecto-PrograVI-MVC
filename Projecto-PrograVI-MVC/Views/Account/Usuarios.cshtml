@@ -1,0 +1,224 @@
+﻿@model Projecto_PrograVI_MVC.Models.AccountModel
+
+@{
+    ViewBag.Title = "Registrar Usuarios";
+}
+
+<h2>Usuarios</h2>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section Scripts {
+ <script src="~/scripts/jquery-1.12.4.min.js"></script>
+<script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#VLSFechaExp").datepicker();
+    });
+
+</script>}
+
+}
+
+@using (Html.BeginForm())
+{
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Registrarse para realizar cotizaciones</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSCedula, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSCedula, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su cedula" } })
+                @Html.ValidationMessageFor(model => model.VLSCedula, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSNacionalidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSNacionalidad, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su nacionalidad" } })
+                @Html.ValidationMessageFor(model => model.VLSNacionalidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSNombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSNombre, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su nombre" } })
+                @Html.ValidationMessageFor(model => model.VLSNombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSApellido1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSApellido1, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su primer apellido" } })
+                @Html.ValidationMessageFor(model => model.VLSApellido1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSApellido2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSApellido2, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su segundo apellido" } })
+                @Html.ValidationMessageFor(model => model.VLSApellido2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSCorreo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSCorreo, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese su correo" } })
+                @Html.ValidationMessageFor(model => model.VLSCorreo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSNumTarjeta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSNumTarjeta, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese Nombre de Tarjeta" } })
+                @Html.ValidationMessageFor(model => model.VLSNumTarjeta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSNomTarjeta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSNomTarjeta, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese Nombre de Tarjeta" } })
+                @Html.ValidationMessageFor(model => model.VLSNomTarjeta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           @Html.LabelFor(model => model.VLSCodigoTarjeta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSCodigoTarjeta, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese Codigo de Tarjeta" } })
+                @Html.ValidationMessageFor(model => model.VLSCodigoTarjeta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+    <div class="form-group">
+    @Html.LabelFor(model => model.VLSFechaExp, htmlAttributes: new { @class = "datepicker col-md-2" })
+    <div class="col-md-10">
+      
+                @Html.TextBoxFor(model => model.VLSFechaExp, new { htmlAttributes = new { @class = "date-picker", @PlaceHolder = "Ingrese Fecha de Expiracion" } })
+                @Html.ValidationMessageFor(model => model.VLSFechaExp, "", new { @class = "text-danger" })
+ 
+
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSProvincia, htmlAttributes: new { @class = "control-label  col-md-2" })
+           
+            <div class="col-md-10">
+               @Html.DropDownListFor(model => model.VLSProvincia, new List<SelectListItem>{
+           new SelectListItem {Text = "San Jose",Value = "San Jose" },  new SelectListItem { Text = "Heredia", Value="Heredia"}
+           ,  new SelectListItem { Text = "Cartago", Value="Cartago"} ,  new SelectListItem { Text = "Alajuela", Value="Alajuela"}
+           ,  new SelectListItem { Text = "Limon", Value="Limon"},  new SelectListItem { Text = "Puntarenas", Value="Puntarenas"}
+           ,  new SelectListItem { Text = "Guanacaste", Value="Guanacaste"}
+          }, "Seleccione Provincia ")
+                @Html.ValidationMessageFor(model => model.VLSProvincia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSCanton, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.VLSCanton, new List<SelectListItem>{
+           new SelectListItem {Text = "San Jose",Value = "San Jose" },  new SelectListItem { Text = "Perez Zeledon", Value="Perez Zeledon"}
+           ,  new SelectListItem { Text = "Guadalupe", Value="3"} ,  new SelectListItem { Text = "Flores", Value="Flores"}
+           ,  new SelectListItem { Text = "Valle de la Estrella", Value="Valle de la Estrella"},  new SelectListItem { Text = "Tres Rios", Value="Tres Rios"}
+           ,  new SelectListItem { Text = "Guacima", Value="Guacima"}
+          }, "Seleccione Provincia donde vive ") 
+             
+                @Html.ValidationMessageFor(model => model.VLSCanton, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSDistrito, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VLSDistrito, new List<SelectListItem>{
+           new SelectListItem {Text = "Sabanilla",Value = "Sabanilla" },  new SelectListItem { Text = "Perez Zeledon", Value="Perez Zeledon"}
+           ,  new SelectListItem { Text = "San Ramon", Value="San Ramon"} ,  new SelectListItem { Text = "Guarari", Value="Guarari"}
+           ,  new SelectListItem { Text = "Batan", Value="Batan"},  new SelectListItem { Text = "Campina", Value="Campina"}
+           ,  new SelectListItem { Text = "Cedros", Value="Cedros"}
+          }, "Seleccione Provincia donde vive ")
+
+
+                @Html.ValidationMessageFor(model => model.VLSDistrito, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSPreSeg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSPreSeg, new { htmlAttributes = new { @class = "form-control" , @PlaceHolder = "Ingrese Pregunta de Seguridad" } })
+                @Html.ValidationMessageFor(model => model.VLSPreSeg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSClave, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSClave, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Ingrese clave" } })
+                @Html.ValidationMessageFor(model => model.VLSClave, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSPrivilegios, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VLSPrivilegios, new List<SelectListItem>{
+           new SelectListItem {Text = "Admin",Value = "Admin" },  new SelectListItem { Text = "Cliente", Value="Cliente"}
+          }, "Seleccione Privilegios del Usuario")
+
+
+                @Html.ValidationMessageFor(model => model.VLSDistrito, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VLSConfirmar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VLSConfirmar, new { htmlAttributes = new { @class = "form-control", @PlaceHolder = "Confirme su clave" } })
+                @Html.ValidationMessageFor(model => model.VLSConfirmar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}  
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
