@@ -381,7 +381,7 @@ namespace Projecto_PrograVI_MVC.Controllers
                     int i2 = cmd2.ExecuteNonQuery();
 
                     MailMessage Correo = new MailMessage();
-                    Correo.From = new MailAddress("alejoguma94@gmail.com");
+                    Correo.From = new MailAddress("correo@gmail.com");
                     Correo.To.Add(lc.VLSCorreo);
                     Correo.Subject = ("Recuperar Clave");
                     Correo.Body = "Hola," + lc.VLSNombre + " ud solciito recuperar su clave, favor ingresar con la siguiente: " +
@@ -389,7 +389,7 @@ namespace Projecto_PrograVI_MVC.Controllers
                     Correo.Priority = MailPriority.Normal;
 
                     SmtpClient ServerEmail = new SmtpClient();
-                    ServerEmail.Credentials = new NetworkCredential("", "clave");
+                    ServerEmail.Credentials = new NetworkCredential("correo", "clave");
                     ServerEmail.Host = "smtp.gmail.com";
                     ServerEmail.Port = 587;
                     ServerEmail.EnableSsl = true;
